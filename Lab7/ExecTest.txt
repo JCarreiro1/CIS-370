@@ -1,0 +1,2 @@
+	[p] this is process 1881 and my parent is 1637
+[c] this is process 1881 and my parent is 1637

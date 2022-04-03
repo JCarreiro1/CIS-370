@@ -1,0 +1,36 @@
+echo My Student Account Is $USER
+echo Todays Date Is
+date
+
+echo
+
+mkdir Lab1
+echo
+cd Lab1
+echo
+mkdir Dict
+echo
+cd Dict
+echo
+cd ~
+echo
+cd Downloads
+echo
+cd ~
+echo
+cd Lab1/Dict
+cp words /home/mint/Lab1/Dict
+echo
+pwd
+echo
+head words
+echo
+tail words
+echo
+grep yesty words
+echo
+wc words
+echo
+head words >> words
+echo
+(head words; tail words; grep yesty words) | sort
