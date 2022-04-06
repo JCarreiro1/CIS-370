@@ -27,7 +27,7 @@ int main(){
     struct circBuff *ctrl;
     char input;
 
-    if( (id = shmget(key, sizeof(struct circBuff), IPC_CREAT | 0666) ) < 0)
+    if( (id = shmget(key, sizeof(struct circBuff), 0 | 0666) ) < 0)
 	{
 		perror("Error: creating shared memory\n");
 		exit(-1);
@@ -39,6 +39,12 @@ int main(){
 		exit(-1);
 	}
 
+    ctrl->in = 0;
+    ctrl->out = 0;
+    for(int i = 0; i < MAX_SIZE; i++){
+        ctrl->buffer[i] = NULL;
+    }
+
     while(1){
         printf("Hit enter to consume from buffer or q to quit\n");
         scanf("%c", &input);
@@ -47,7 +53,7 @@ int main(){
             break;
         } else{
             if(ctrl->out == ctrl->in){
-                printf("\t\t\t<Buffer is empty. Waiting for something to consume...>\n");
+                printf("\t\t<Buffer is empty. Waiting for something to consume...>\n");
                 while(ctrl->out == ctrl->in){
                     continue;
                 }
@@ -57,6 +63,9 @@ int main(){
             printBuff(ctrl);
         }
     }
+
+    //shmctl(id, IPC_RMID, 0);
+    shmdt(ctrl);
 
     return 0;
 }

@@ -41,5 +41,8 @@ int main(){
         }
     }
 
+    shmctl(id, IPC_RMID, 0);
+    shmdt(ptr);
+
     return 0;
 }

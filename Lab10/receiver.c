@@ -11,7 +11,7 @@ int main(){
     int id;
     struct message *ctrl;
 
-    if( (id = shmget(key, sizeof(struct message), IPC_CREAT | 0666) ) < 0)
+    if( (id = shmget(key, sizeof(struct message), 0 | 0666) ) < 0)
 	{
 		perror("Error: creating shared memory\n");
 		exit(-1);
@@ -38,6 +38,9 @@ int main(){
             break;
         }
     }
+
+    //shmctl(id, IPC_RMID, 0);
+    shmdt(ctrl);
 
     return 0;
 }
