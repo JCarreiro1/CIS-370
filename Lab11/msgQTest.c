@@ -23,7 +23,7 @@ int main(int argc, char **argv){
     size_t buffLength;
 
     // Creating a message queue
-    if(strcmp(argv[1], "-c/C") == 0){
+    if((strcmp(argv[1], "-c") == 0) || (strcmp(argv[1], "-C") == 0)){
         if(argc != 3){
             printf("[error] Command must be in the following form: ./progQ -c/C <key>\n");
             return -1;
@@ -38,7 +38,7 @@ int main(int argc, char **argv){
     }
 
     // Sending a message to the queue
-    if(strcmp(argv[1], "-s/S") == 0){
+    if((strcmp(argv[1], "-s") == 0) || (strcmp(argv[1], "-S") == 0)){
         if(argc != 5){
             printf("[error] Command must be in the following form: ./progQ -s/S <key> <type> <text>\n");
             return -2;
@@ -54,7 +54,7 @@ int main(int argc, char **argv){
     }
 
     // Read a message from the queue
-    if(strcmp(argv[1], "-r/R") == 0){
+    if((strcmp(argv[1], "-r") == 0) || (strcmp(argv[1], "-R") == 0)){
         if(argc != 4){
             printf("[error] Command must be in the following form: ./progQ -r/R <key> <type>\n");
             return -3;
@@ -68,7 +68,7 @@ int main(int argc, char **argv){
     }
 
     // Delete a message queue
-    if(strcmp(argv[1], "-d/D") == 0){
+    if((strcmp(argv[1], "-d") == 0) || (strcmp(argv[1], "-D") == 0)){
         if(argc != 3){
             printf("[error] Command must be in the following form: ./progQ -d/D <key>\n");
             return -4;
